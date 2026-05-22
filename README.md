@@ -84,7 +84,7 @@ How to Run
 
 Data was download from the source page, "tabular data" was selected and 9 zips with 10 files each were placed in the folder /home/jesse.correa*****/Downloads
 
-1. Environment
+## 1. Environment
 
 Use the provided Singularity container (PyTorch 22.01 with CUDA).
 
@@ -97,7 +97,7 @@ Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-2. Extract data 
+## 2. Extract data 
 extract data from the download folder with 00_extract_zips.py
 Extract the 9 NinaPro DB10 .zip files and organize the resulting .mat files.
 Run this FIRST, before any other script.
@@ -110,13 +110,9 @@ Expected input structure:
 
 ├── S02.zip
 
-└── ...
 Then run 01_explore_mat.py
-=================
-First script: explore the content of the files .mat of MeganePro DB10.
-Run to understand the structure of the .mat 
-02_load_dataset.py
-==================
+First script: explore the contect of the files .mat of MeganeProDB10. Run to understand the structure of the .mat load_dataset.py
+
 Loads and organizes all NinaPro DB10 (MeganePro) .mat files into a unified format ready for preprocessing.
 
 Actual variable names in DB10 (different from other NinaPro versions):
@@ -143,7 +139,7 @@ from load_dataset import NinaProDB10Dataset
 ds = NinaProDB10Dataset("/path/to/data") 
 data = ds.load_subject(subject_id=22)
 
-3. Preprocess the data (only needed once)
+## 3. Preprocess the data (only needed once)
 
 ```bash
 python src/03_preprocess_clip.py --data_dir /path/to/raw/matfiles --out_dir ./processed --window_ms 400 --stride_ms 100 --modalities emg acc --exclude_rest
